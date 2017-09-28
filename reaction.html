@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+    <head>
+
+        <title>Javascript</title>
+            
+
+        <style type="text/css">
+            
+            #topstyle {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #randomBox {
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                top:  260px;
+                left: 300px;
+                background-color: green;
+                
+
+                }
+
+            
+
+            
+        </style>
+   
+    </head>
+
+
+
+
+    <body>
+        <div id="topstyle">
+            <h1>Test Your Reactions!</h1>
+            
+            <p> Click on the boxes and circles as quickly as you can!</p>
+            
+            <h3>Your time: <span id="time"></span></h3>
+            <br>
+        </div>
+
+        
+        <div id="randomBox"></div>
+
+       <script type="text/javascript"> 
+
+        function randomSh(a, b) {
+            randomNum = Math.floor((Math.random() * b) + a);
+            return (randomNum);
+        }
+        
+        var start = new Date();
+        
+        function showBox (){
+                document.getElementById('randomBox').style.display = "block";
+                start = new Date();
+            }
+
+        document.getElementById('randomBox').onclick = function () {
+
+            var randomTop = randomSh(160, 700);
+            var randomLeft = randomSh(10, 700);
+            var randomWit= randomSh(80, 300);
+            var randomColor1= randomSh(0, 255);
+            var randomColor2= randomSh(0, 255);
+            var randomColor3= randomSh(0, 255);
+            var randomRadius= randomSh(0,50);
+            if (randomRadius <= 25){
+                randomRadius = 0;
+            } else {
+                randomRadius = 50;
+            }
+
+
+            document.getElementById('randomBox').style.top = randomTop + "px";
+            document.getElementById('randomBox').style.left = randomLeft + "px";
+            document.getElementById('randomBox').style.width = randomWit + "px";
+            document.getElementById('randomBox').style.height = randomWit + "px";
+            document.getElementById('randomBox').style.backgroundColor = 'rgb(' + randomColor1 + ',' + randomColor2 + ',' + randomColor3 + ')';
+            document.getElementById('randomBox').style.borderRadius = randomRadius + "%";
+
+            var end = new Date();
+            
+            var timeElapsed = (end - start)/1000;
+            
+
+            document.getElementById('time').innerHTML= timeElapsed + "s";
+            
+
+            
+
+            document.getElementById('randomBox').style.display = "none";
+            
+
+            setTimeout(showBox, Math.random() * 2000);
+            
+            
+        }
+
+        
+
+        
+       </script>
+
+    </body>
+
+
+
+</html>
